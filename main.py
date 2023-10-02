@@ -2,7 +2,7 @@ import bcrypt
 from tortoise.contrib.fastapi import register_tortoise
 from starlette.exceptions import HTTPException
 from fastapi import FastAPI
-from models.models_for_pydantic import (
+from all_models.models_for_pydantic import (
     UserRequest,
     GameRequest,
     UserResponse,
@@ -11,7 +11,7 @@ from models.models_for_pydantic import (
     UserWithGames,
     GameWithUsers,
 )
-from models.models import User, Game
+from all_models.models import User, Game
 from config.settings import database_url, settings_site
 
 app = FastAPI()
@@ -101,11 +101,10 @@ async def about_user(game_id: int):
 
 
 # app.include_router(router)
-print(database_url)
 register_tortoise(
     app,
     db_url=database_url,
-    modules={"models": ["models"]},
+    modules={"all_models": ["all_models.models"]},
     generate_schemas=True,
     add_exception_handlers=True,
 )

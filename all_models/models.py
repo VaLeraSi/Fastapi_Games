@@ -8,7 +8,7 @@ class User(Model):
     email = fields.CharField(max_length=255)
     phone = fields.CharField(max_length=12, unique=True)
     password_hash = fields.CharField(max_length=255)
-    games = fields.ManyToManyField("models.Game", related_name="users", through="users_games")
+    games = fields.ManyToManyField("all_models.Game", related_name="users", through="users_games")
 
 
 class Game(Model):

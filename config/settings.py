@@ -23,7 +23,7 @@ settings_site = SiteSettings()
 
 
 class PostgresSettings(BaseSettings):
-    model_config = SettingsConfigDict(env_file='../.env', env_file_encoding='utf-8', env_prefix='DATABASE_')
+    model_config = SettingsConfigDict(env_file='.env', env_file_encoding='utf-8', env_prefix='DATABASE_')
     user: str = Field(alias='DATABASE_USER')
     password: str = Field(alias='DATABASE_PASSWORD')
     host: str = Field('localhost', alias='DATABASE_HOST')
